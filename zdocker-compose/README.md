@@ -22,8 +22,9 @@ PostgreSQL Docker container'ı ayağa kalktıktan sonra tabloların oluşturulma
    - Windows için `zdocker-compose/docker-database-fill.bat` dosyasını çalıştırın.
    
       veya
-   - Terminalden docker komutunu çalıştırın
+   - Terminalden docker komutunu çalıştırın (Windows yazımı problemleri gidermek için dos2unix)
       ```bash
+      docker exec -it node_server_hk dos2unix /app/database.sh
       $> docker exec -it node_server_hk sh /app/database.sh
       ```
 tablo ve test verileri oluşturma bash-script'i çalışacaktır.
