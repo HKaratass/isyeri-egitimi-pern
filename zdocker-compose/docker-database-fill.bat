@@ -1,0 +1,1 @@
+docker exec -it node_server_hk sh /app/database.sh

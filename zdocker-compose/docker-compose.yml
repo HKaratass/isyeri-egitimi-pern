@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgresql_hk
+    environment:
+      POSTGRES_DB: "proje"
+      POSTGRES_USER: "adminhk"
+      POSTGRES_PASSWORD: "12345"
+      PGPORT: "5431"
+    ports:
+      - "5431:5431"
+    #expose denemesi yap sadece içeride açık olsun
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - pern
+
+  redis_db:
+    image: redis:latest
+    container_name: redis_hk
+    ports:
+      - "6379:6379"
+    #expose denemesi yap sadece içeride açık olsun
+    networks:
+      - pern
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_hk
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    networks:
+      - pern
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+  
+  server:
+    container_name: node_server_hk
+    build: 
+      context: ./server
+    expose:
+      - "1071"
+    networks:
+      - pern
+    depends_on:
+      - postgres
+      - redis_db
+    env_file:
+      - server/.env
+    environment:
+      CLIENT_URL: 'http://proje.isyeriegitimi.com'
+      API_URL: 'http://api.proje.isyeriegitimi.com'
+      NODE_ENV: 'development'
+      # NODE_ENV: 'production'
+      # CLIENT_URL: 'https://proje.isyeriegitimi.com'
+      # API_URL: 'https://api.proje.isyeriegitimi.com'
+      SMTP_HOST: 'posta.isyeriegitimi.com'
+      SMTP_PORT: '25'
+      SMTP_SECURE: 'non-secure'
+      SMTP_USER: 'proje@isyeriegitimi.com'
+      SMTP_PASSWORD: '*SMTPtesthesabisifresi*'
+      TO_MAIL: 'hasan.karatas@gazi.edu.tr'
+      MANAGERS: 'general.het06@gmail.com, hasan.karatas@gazi.edu.tr'
+      REDIS_HOST: 'redis_db'
+      DATABASE_HOST: 'postgres'
+    volumes:
+      - ./public-data:/app/public
+      - ./temp-data:/app/.temp
+      - ./removed-log-data:/app/RemovedLog
+
+  captcha-server:
+    container_name: python_captcha_server_hk
+    build:
+      context: ./captcha
+    expose:
+      - "1072"
+    networks:
+      - pern
+    depends_on:
+      - redis_db
+
+networks:
+  pern:
+    driver: bridge
+volumes:
+  postgres-data:
+  dist:
+  public-data:
+  temp-data:
+  removed-log-data:
