@@ -42,7 +42,8 @@ Windows için [Host Ekleme Batch-Script](bin/addHosts.bat)'i çalıştırabilirs
 #### Siteye Giriş
 - Tarayıcı üzerinden [http://proje.isyeriegitimi.com](http://proje.isyeriegitimi.com) adresine giderek siteye ulaşabilirsiniz.
 - Yönetici paneline erişmek için [http://proje.isyeriegitimi.com/admin/dashboard](http://proje.isyeriegitimi.com/admin/dashboard) adresine gidin ve aşağıdaki kimlik bilgilerini kullanın:
-   - `test:12345` yada
+   - `test:12345` veya
    - [Users](server/models/seeds/01_users_seed.js) dosyasındaki hesaplardan biriyle (username:şifre, email:şifre, phone_number:şifre kombinasyonları) giriş yapabilirsiniz.
 
+   _Not: "Bildiri Gönder" fonksiyonunun kullanılabilmesi için SMTP veya Gmail ile Nodemailer yapılandırmasının yapılması gerekmektedir._
 ---

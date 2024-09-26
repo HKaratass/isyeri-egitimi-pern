@@ -164,9 +164,10 @@ Windows için [Host Ekleme Batch-Script](bin/addHosts.bat)'i çalıştırabilirs
 #### Siteye Giriş
 - Tarayıcı üzerinden [http://proje.isyeriegitimi.com](http://proje.isyeriegitimi.com) adresine giderek siteye ulaşabilirsiniz.
 - Yönetici paneline erişmek için [http://proje.isyeriegitimi.com/admin/dashboard](http://proje.isyeriegitimi.com/admin/dashboard) adresine gidin ve aşağıdaki kimlik bilgilerini kullanın:
-   - `test:12345` yada
+   - `test:12345` veya
    - [Users](server/models/seeds/01_users_seed.js) dosyasındaki hesaplardan biriyle (username:şifre, email:şifre, phone_number:şifre kombinasyonları) giriş yapabilirsiniz.
 
+   _Not: "Bildiri Gönder" fonksiyonunun kullanılabilmesi için SMTP veya Gmail ile Nodemailer yapılandırmasının yapılması gerekmektedir._
 ---
 ## Local Hot-Reload Kurulum
 ### Windows için otomatik kurulum
@@ -202,8 +203,10 @@ Sırasıyla:
 #### Siteye Giriş
 - Tarayıcı üzerinden [http://localhost:1453](http://localhost:1453/) adresine giderek siteye ulaşabilirsiniz.
 - Yönetici paneline erişmek için [http://localhost:1453/admin/dashboard](http://localhost:1453/admin/dashboard) adresine gidin ve aşağıdaki kimlik bilgilerini kullanın:
-   - `test:12345` yada
+   - `test:12345` veya
    - [Users](server/models/seeds/01_users_seed.js) dosyasındaki hesaplardan biriyle (username:şifre, email:şifre, phone_number:şifre kombinasyonları) giriş yapabilirsiniz.
+
+   _Not: "Bildiri Gönder" fonksiyonunun kullanılabilmesi için SMTP veya Gmail ile Nodemailer yapılandırmasının yapılması gerekmektedir._
    
 #### Verilerin Sıfırlanması
 - Site üzerinden verilerde değişiklik yaptıktan sonra salt verilere geri dönmek için **"Format + Fill Database"** ve **"Format + Fill Public"** batch dosyalarını çalıştırabilirsiniz.
@@ -311,9 +314,10 @@ Sırasıyla:
 #### Siteye Giriş
 - Tarayıcı üzerinden [http://localhost:1453](http://localhost:1453) adresine giderek siteye ulaşabilirsiniz.
 - Yönetici paneline erişmek için [http://localhost:1453/admin/dashboard](http://localhost:1453/admin/dashboard) adresine gidin ve aşağıdaki kimlik bilgilerini kullanın:
-   - `test:12345` yada
+   - `test:12345` veya
    - [Users](server/models/seeds/01_users_seed.js) dosyasındaki hesaplardan biriyle (username:şifre, email:şifre, phone_number:şifre kombinasyonları) giriş yapabilirsiniz.
-
+   
+   _Not: "Bildiri Gönder" fonksiyonunun kullanılabilmesi için SMTP veya Gmail ile Nodemailer yapılandırmasının yapılması gerekmektedir._
 ---
 ## Termux (Deploy on Android)
  - Termuxda çalıştırılmıştır.
